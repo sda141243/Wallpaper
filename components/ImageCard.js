@@ -1,10 +1,13 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { getImageSize,wp,hp } from '../common/common';
+
+import { Image, Pressable, StyleSheet } from 'react-native';
+import { getImageSize, wp } from '../common/common';
 import { theme } from '../common/theme';
 
+const ImageCard = ({item,index,columns,router}) => {
 
-const ImageCard = ({item,index}) => {
+    const islistindex=()=>{
+        return (index+1) % columns === 0;
+    }
 
     const getImageHeight=()=>{
         let{imageheight:height,innerWidth:width}=item;
@@ -12,10 +15,12 @@ const ImageCard = ({item,index}) => {
     }
 
   return (
-   <Pressable style={styles.imagewrapper}>
+   <Pressable onPress={()=>router.push({pathname:'home/image', params: {...item}})} 
+   style={[styles.imagewrapper , !islistindex() && styles.spacing]}>
     <Image
     style={[styles.image,getImageHeight()]}
     source={{uri: item?.webformatURL}}
+    transition={100}
     />
   
 
@@ -27,15 +32,20 @@ export default ImageCard
 
 const styles = StyleSheet.create({
   image:{
-        height:300,
-        width:'100%',
-        gap:20
+        height:400,
+        width:'110%',
+        
     },
     imagewrapper:{
         backgroundColor:theme.colors.greyBG,
-        borderRadius:24,
+        borderRadius:18,
+        borderCurve:'continuous',
         overflow:'hidden',
         marginBottom:wp(2),
-        margin:10
+        marginTop:wp(2)
+        
+    },
+    spacing:{
+        marginRight:wp(2)
     }
 })

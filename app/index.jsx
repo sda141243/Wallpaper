@@ -1,18 +1,17 @@
+import { LinearGradient } from "expo-linear-gradient";
+import { useRouter } from "expo-router";
+import React from "react";
 import {
-  View,
-  Text,
-  StatusBar,
-  StyleSheet,
   Image,
   Pressable,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
-import React from "react";
-import { wp, hp } from "../common/common";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { LinearGradient } from "expo-linear-gradient";
+import { hp, wp } from "../common/common";
 import { theme } from "../common/theme";
-import { useRoute } from "@react-navigation/native";
-import { useRouter } from "expo-router";
 const index = () => {
   const router=useRouter();
   return (
@@ -101,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.neutral(0.9),
     padding: 15,
     paddingHorizontal: 50,
-    borderRadius: theme.radius.xl,
+    borderRadius: 16,
     borderCurve: "continuous",
   },
 

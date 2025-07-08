@@ -1,9 +1,8 @@
-import {FlatList, Pressable, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { FlatList, Pressable, StyleSheet, Text } from "react-native";
+import Animated, { FadeInRight } from "react-native-reanimated";
+import { hp, wp } from "../common/common";
 import { data } from "../common/data";
-import { wp, hp } from "../common/common";
 import { theme } from "../common/theme";
-import Animated, { FadeInDown, FadeInRight } from "react-native-reanimated";
 
 const Catagory = ({activecatagory ,handlechangecatagory}) => {
 

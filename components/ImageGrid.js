@@ -1,18 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import MansonryFlashList, { MasonryFlashList } from "@shopify/flash-list";
+import { StyleSheet, View } from 'react-native';
 
-import { wp, hp, getColumncount } from "../common/common";
+import { MasonryFlashList } from '@shopify/flash-list';
+import { getColumncount, wp } from "../common/common";
 import ImageCard from './ImageCard';
-const ImageGrid = ({images}) => {
+
+const ImageGrid = ({images, router}) => {
+  const columns=getColumncount();
   return (
     <View style={styles.container}>
     <MasonryFlashList
     data={images}
-    numColumns={2}
+    numColumns={columns}
     initialNumToRender={100}
     contentContainerStyle={styles.containerstyle}
-    renderItem={({item,index})=><ImageCard item={item}  index={index}/>}
+    renderItem={
+      ({item,index})=><ImageCard router={router} item={item} columns={columns}  index={index} 
+    />
+    }
     estimatedItemSize={200}
     />
     </View>

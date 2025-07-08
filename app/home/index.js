@@ -1,11 +1,12 @@
-import { Pressable, ScrollView, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useEffect, useRef, useState } from 'react'
-import { wp, hp } from "../../common/common";
-import { theme } from "../../common/theme";
-import {useSafeAreaInsets,} from "react-native-safe-area-context";
-import {Feather, FontAwesome6, Ionicons} from '@expo/vector-icons';
-import Catagory from '../../components/Catagory';
+import { Feather, FontAwesome6, Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import { useEffect, useRef, useState } from 'react';
+import { Pressable, ScrollView, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useSafeAreaInsets, } from "react-native-safe-area-context";
 import { apicall } from '../../api';
+import { hp, wp } from "../../common/common";
+import { theme } from "../../common/theme";
+import Catagory from '../../components/Catagory';
 import ImageGrid from '../../components/ImageGrid';
 const index = () => {
     const {top}= useSafeAreaInsets();
@@ -76,7 +77,7 @@ else{
                 <Catagory activecatagory={activecatagory} handlechangecatagory={handlechangecatagory}/>
                 <View>
                     {
-                        images.length>0 && <ImageGrid images={images}/>
+                        images.length>0 && <ImageGrid images={images} router={router}/>
                     }
                 </View>
         </View>
